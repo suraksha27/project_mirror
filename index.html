@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Mirror</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -12,13 +13,11 @@
     />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/date-time.css" />
-    <link rel="stylesheet" href="./css/weather.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
       rel="stylesheet"
     />
-    
   </head>
   <body>
     <header>
@@ -41,27 +40,24 @@
         >
       </div>
     </header>
-    <main></main>
-    <footer>
-      <div id="fotter-container">
+    <main>
+      <div style="flex:3">
 
       </div>
+      <div style="flex:2;position: relative;display: flex;justify-content: center;align-items: center;">
+        <div style="width:700px;position: absolute;" id="videoContainer">
+        </div>
+        <div  id="audioContainer" style="position: absolute;" hidden>
+          <img width="200" height="200" src="./assets/youtube.png"/>
+          <h5 id="mediaTitle"></h5>
+        </div>
+      
+    </main>
+    <footer>
+      <div id="fotter-container"></div>
     </footer>
-    <script src="./js/clock.js"></script>
-    <script src="./js/news-demo.js"></script>
-    <script src="./js/news.js"></script>
-    <script>
-      !(function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://weatherwidget.io/js/widget.min.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }
-      })(document, "script", "weatherwidget-io-js");
-    </script>
+
+    <!-- Js from bootstrap vendor -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -77,5 +73,30 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!-- Project Built Js -->
+    <script src="./js/clock.js"></script>
+    <!--Clock and Date functions-->
+    <script src="./js/news-demo.js"></script>
+    <!--News Data for test case. Fetch api replaces the data-->
+    <script src="./js/news.js"></script>
+    <!-- News function that injects carosel in footer -->
+    <script src="./js/weather.js"></script>
+    <!--Weather iFrame injector -->
+    <script src="./js/youtube.js"></script>
+    <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+    <script>
+      // Change "{}" to your options:
+    // https://github.com/sampotts/plyr/#options
+    console.log("Log 3")
+
+      // const player = new Plyr('#player');
+      // console.log("Log 4")
+
+      // // Expose player so it can be used from the console
+      // window.player = player;
+      console.log("Log 5")
+
+    </script>
+    <script src="./js/player.js"></script>
   </body>
 </html>

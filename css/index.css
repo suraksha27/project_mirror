@@ -11,7 +11,7 @@ body{
     flex-direction: column;
 }
 header{
-    flex:3;
+    flex:2;
     /* border:solid 1px white; */
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,9 @@ header{
 }
 main{
     flex:10;
-    /* border:solid 1px white; */
+    border:solid 1px white;
+    display: flex;
+    flex-direction: column;
 }
 footer{
     flex:1;
@@ -27,6 +29,13 @@ footer{
     display: flex;
     justify-content: center;
 }
+/* Container that covers 90% of footer for proer display fo carosel */
 #fotter-container{
     width: 90%;
+}
+/* Weather widthd and height for proper weather data view */
+#weather-holder{
+    width: 316px;
+    height: 100%;
+    margin-right: 20px;
 }
