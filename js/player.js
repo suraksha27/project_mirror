@@ -22,16 +22,27 @@ function pausePlayer(){if(window.player){player.pause()}}
 
 function playPlayer(){if(window.player){player.play()}}
 
-function stopPlayer(){if(window.player){player.stop()}}
+function stopPlayer(){
+    if(window.player){
+        player.stop()
+        window.player=null
+        const videoContainer=document.querySelector("#videoContainer");
+        videoContainer.removeChild(videoContainer.childNodes[0]);
+        document.querySelector("#audioContainer").hidden=true
+    }
+}
 
 function toggleVideoAndAudio(isVideo){
-    if(isVideo){
-        document.querySelector("#videoContainer").hidden=false
-        document.querySelector("#audioContainer").hidden=true
-    }else{
-        document.querySelector("#videoContainer").hidden=true
-        document.querySelector("#audioContainer").hidden=false
+    if(window.player){
+        if(isVideo){
+            document.querySelector("#videoContainer").hidden=false
+            document.querySelector("#audioContainer").hidden=true
+        }else{
+            document.querySelector("#videoContainer").hidden=true
+            document.querySelector("#audioContainer").hidden=false
+        }
     }
+    
 }
 
 // injectPlayer('ShfabTBpnaA')
