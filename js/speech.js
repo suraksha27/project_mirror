@@ -15,10 +15,10 @@ function startEva(){
     console.log('Eva has started');
     window.evaIsListening=true
     const evaIcon=document.querySelector('#eva');
-    evaIcon.setAttribute('class','eva-is-listening')
+    evaIcon.setAttribute('class','animate__animated animate__bounce eva-is-listening')
     setTimeout(()=>{
-        evaIcon.classList.remove('eva-is-listening')
-    },5000)
+        evaIcon.setAttribute('class','')
+    },4000)
 }
 
 function startMusic(){
@@ -52,6 +52,7 @@ recognition.onresult=function(event){
                         break;
         case 'play with video':toggleVideoAndAudio(true);
                         break;
-        case 'eva stop':recognition.stop()
+        case 'eva stop':recognition.stop();
+                        break;
     }
 }
