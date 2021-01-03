@@ -18,12 +18,12 @@ function injectPlayer(mediaId){
       },1500)
 }
 
-function pausePlayer(){if(window.player){player.pause()}}
+function pausePlayer(){if(window.player && window.evaIsListening){player.pause()}}
 
-function playPlayer(){if(window.player){player.play()}}
+function playPlayer(){if(window.player && window.evaIsListening){player.play()}}
 
 function stopPlayer(){
-    if(window.player){
+    if(window.player && window.evaIsListening){
         player.stop()
         window.player=null
         const videoContainer=document.querySelector("#videoContainer");
@@ -35,7 +35,7 @@ function stopPlayer(){
 }
 
 function toggleVideoAndAudio(isVideo){
-    if(window.player){
+    if(window.player && window.evaIsListening){
         if(isVideo){
             document.querySelector("#videoContainer").hidden=false
             document.querySelector("#audioContainer").hidden=true

@@ -22,8 +22,9 @@ function startEva(){
 }
 
 function startMusic(){
+    console.log('Start music triggered')
     if(window.evaIsListening){
-        console.log('Music is on')
+        searchYoutubeVideoId('satayera')
     }else{
         console.log('Eva is not listening')
     }
@@ -32,14 +33,24 @@ function startMusic(){
 }
 
 recognition.onresult=function(event){
-    const userInput=event.results[0][0].transcript
-    console.log(userInput)
-    delete event.results[0]
     console.log(event.results)
-    switch(userInput.toLowerCase()){
+    const lastInput=event.results.length
+    const userInput=event.results[lastInput-1][0].transcript
+    console.log(userInput)
+    switch(userInput.toLowerCase().trim()){
         case 'hey eva':startEva();
                         break;
         case 'play music':startMusic();
+                        break;
+        case 'pause music':pausePlayer();
+                        break;
+        case 'unpause music': playPlayer();
+                        break;
+        case 'stop music': stopPlayer()
+                        break;
+        case 'play only audio':toggleVideoAndAudio(false);
+                        break;
+        case 'play with video':toggleVideoAndAudio(true);
                         break;
         case 'eva stop':recognition.stop()
     }
