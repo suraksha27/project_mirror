@@ -27,7 +27,9 @@ function stopPlayer(){
         player.stop()
         window.player=null
         const videoContainer=document.querySelector("#videoContainer");
-        videoContainer.removeChild(videoContainer.childNodes[0]);
+        while (videoContainer.firstChild) {
+            videoContainer.removeChild(videoContainer.firstChild);
+        }
         document.querySelector("#audioContainer").hidden=true
     }
 }

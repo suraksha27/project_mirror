@@ -13,13 +13,21 @@
     />
     <link rel="stylesheet" href="./css/index.css" />
     <link rel="stylesheet" href="./css/date-time.css" />
+    <link rel="stylesheet" href="./css/voice.assistant.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   </head>
   <body>
+    <div id="voice-div">
+      <img src="./assets/eva.svg" id="eva"/>
+    </div>
     <header>
       <div id="date-time-holder">
         <div id="clock-holder">
@@ -42,7 +50,7 @@
     </header>
     <main>
       <div style="flex:3">
-
+        <!-- This div is for face view and does not require any content -->
       </div>
       <div style="flex:2;position: relative;display: flex;justify-content: center;align-items: center;">
         <div style="width:700px;position: absolute;" id="videoContainer">
@@ -84,5 +92,6 @@
     <!--Weather iFrame injector -->
     <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
     <script src="./js/player.js"></script>
+    <script src="./js/speech.js"></script>
   </body>
 </html>
