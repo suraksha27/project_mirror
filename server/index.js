@@ -4,6 +4,12 @@ const app=express()
 const ytSearch=require("yt-search")
 app.use(express.json())
 app.use(cors())
+var path = require('path');
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../index.html'));
+});
+
 
 app.get('/search',async(request,response)=>{
     console.log(request.query)
@@ -18,6 +24,6 @@ app.get('/search',async(request,response)=>{
 })
 
 
-app.listen(3001,()=>{
+app.listen(3000,()=>{
     console.log('Server is running at port 3001')
 })

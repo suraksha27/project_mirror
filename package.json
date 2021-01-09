@@ -1,0 +1,30 @@
+{
+  "name": "project_mirror",
+  "version": "0.1.0",
+  "description": "This is a project that serves a web application as a mirror UI and same server makes api calls for us.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./bin/www",
+    "start":"node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suraksha27/project_mirror.git"
+  },
+  "author": "Suraksha Shrestha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suraksha27/project_mirror/issues"
+  },
+  "homepage": "https://github.com/suraksha27/project_mirror#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "yt-search": "^2.5.1"
+  }
+}
