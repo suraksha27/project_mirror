@@ -1,5 +1,3 @@
-// let SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-// let SpeechRecognitionEvent = webkitSpeechRecognitionEvent
 const recognition=new webkitSpeechRecognition()
 recognition.continuous=true;
 recognition.lang = 'en-US';
@@ -8,28 +6,19 @@ recognition.maxAlternatives = 1;
 
 function startRecognition(){
     recognition.start();
-    console.log("Say Something");
 }
 
 function startEva(){
+    const evaAudio=document.querySelector('#eva-sound')
     window.evaIsListening=true
     const evaIcon=document.querySelector('#eva');
     evaIcon.setAttribute('class','animate__animated animate__bounce eva-is-listening')
+    evaAudio.play()
     setTimeout(()=>{
         evaIcon.setAttribute('class','')
     },5000)
 }
 
-function searchYoutube(){
-
-    if(window.evaIsListening){
-        searchYoutubeVideoId('satayera')
-    }else{
-        console.log('Eva is not listening')
-    }
-    window.evaIsListening=false
-    
-}
 
 recognition.onresult=function(event){
     console.log(event.results)
@@ -41,19 +30,25 @@ recognition.onresult=function(event){
     }else if(window.evaIsListening){
         if(cleanTranscript.startsWith('search youtube for')){
             const searchCriteria=cleanTranscript.slice(19)
-            console.log(searchCriteria)
             searchYoutubeVideoId(searchCriteria)
         }else if(cleanTranscript==="play media"){
-            playPlayer()   
-        }else if(cleanTranscript==="pause media"){
+            playPlayer()
+        }else if(cleanTranscript==="pause"){
             pausePlayer()
-        }else if(cleanTranscript==="stop media"){
+        }else if(cleanTranscript==="stop"){
             stopPlayer()
-        }else if(cleanTranscript==="disable video"){
+        }else if(cleanTranscript==="switch to audio"){
             toggleVideoAndAudio(false)
-        }else if(cleanTranscript==="enable video"){
+        }else if(cleanTranscript==="switch to video"){
             toggleVideoAndAudio(true)
         }
-
+        else if(cleanTranscript==="show command list"){
+            bringCommandList()
+            window.evaIsListening=false
+        }
+        else if(cleanTranscript==="hide command list"){
+            removeCommandList()
+            window.evaIsListening=false
+        }
     }
 }

@@ -19,7 +19,7 @@ header{
 }
 main{
     flex:10;
-    border:solid 1px white;
+    /* border:solid 1px white; */
     display: flex;
     flex-direction: column;
 }

@@ -4,6 +4,7 @@ async function searchYoutubeVideoId(searchText){
     const response = await fetch(url);
     const result= await response.json();
     injectPlayer(result.videoId)
+    window.evaIsListening=false
 }
 
 function injectPlayer(mediaId){
@@ -13,14 +14,21 @@ function injectPlayer(mediaId){
         const player = new Plyr('#player');
       // Expose player so it can be used from the console
       window.player = player;
-    //   setTimeout(()=>{
-    //     player.play()
-    //   },1500)
 }
 
-function pausePlayer(){if(window.player && window.evaIsListening){player.pause()}}
+function pausePlayer(){
+    if(window.player && window.evaIsListening){
+        player.pause()
+        window.evaIsListening=false
+    }
+}
 
-function playPlayer(){if(window.player && window.evaIsListening){player.play()}}
+function playPlayer(){
+    if(window.player && window.evaIsListening){
+        player.play()
+        window.evaIsListening=false
+    }
+}
 
 function stopPlayer(){
     if(window.player && window.evaIsListening){
@@ -31,6 +39,7 @@ function stopPlayer(){
             videoContainer.removeChild(videoContainer.firstChild);
         }
         document.querySelector("#audioContainer").hidden=true
+        window.evaIsListening=false
     }
 }
 
@@ -43,6 +52,7 @@ function toggleVideoAndAudio(isVideo){
             document.querySelector("#videoContainer").hidden=true
             document.querySelector("#audioContainer").hidden=false
         }
+        window.evaIsListening=false
     }
     
 }

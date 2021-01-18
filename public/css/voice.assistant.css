@@ -6,6 +6,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
 }
 
 #eva{
@@ -16,11 +17,26 @@
     box-sizing: border-box;
     padding:5px;
     position: fixed;
-    bottom:10%;
+    bottom:8%;
     right: 45%;
     border: solid 1px black;
 }
 
 .eva-is-listening{
     box-shadow: 0px 0px 0px 10px lightgreen;
+}
+
+#eva-commands-list{
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top:30%;
+    border:solid 1px white;
+    color: white;
+    border-radius: 10px;
+    padding:20px;
+}
+#eva-commands-list > em{
+    display: block;
+    font-size: 20px;
 }
