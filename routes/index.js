@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
 router.get('/search',async(request,response)=>{
   console.log(request.query)
   const {yt}=request.query
