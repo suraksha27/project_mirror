@@ -1,0 +1,21 @@
+#calender-div{
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top:30%;
+    right:0;
+    border:solid 1px white;
+    color: white;
+    border-radius: 10px;
+    padding:20px;
+    z-index: +5;
+}
+
+#calender-div > h3{
+    color:white;
+    text-align: center;
+}
+
+#calender-div > ul{
+    margin-left: 10px;
+}
