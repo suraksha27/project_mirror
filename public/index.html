@@ -25,7 +25,7 @@
       <audio style="display: none;" id="eva-sound">
         <source src="./assets/notification.mp3" type="audio/mpeg" />
       </audio>
-      <div id="eva-commands-list">
+      <div id="eva-commands-list" style="display: none;">
         <h4>Command List:</h4>
         <h5>1) Youtube</h5>
         <em>> Search Youtube For ...</em>
@@ -43,7 +43,6 @@
         <em></em>
       </div>
       <div id="calender-div">
-        <button id="calender-test">Add Event to Jan 19</button>
       </div>
     </div>
   </div>
@@ -110,17 +109,6 @@
   <script src="./js/render-containers.js"></script>
   <!-- Runs the audio controller to recognize voices -->
   <script src="./js/speech.js"></script>
-
-  <script>
-    document.querySelector('#calender-test').addEventListener('click',()=>{
-      console.log(calenderData)
-      if(!calenderData['1/19/2021']){
-        calenderData['1/19/2021']=['New data inserted']
-      }else if(calenderData['1/19/2021'].length<5){
-        calenderData['1/19/2021'].push('Added to existing one')
-      }
-    })
-  </script>
 </body>
 
 </html>

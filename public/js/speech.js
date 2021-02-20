@@ -25,11 +25,11 @@ recognition.onresult=function(event){
     const lastInput=event.results.length
     const userInput=event.results[lastInput-1][0].transcript
     const cleanTranscript=userInput.toLowerCase().trim()
-    if(cleanTranscript==='hey eva'){
+    if(cleanTranscript.includes('eva') || cleanTranscript.includes('evva')){
         startEva()
     }else if(window.evaIsListening){
         if(cleanTranscript.startsWith('search youtube for')){
-            const searchCriteria=cleanTranscript.slice(19)
+            const searchCriteria=cleanTranscript.slice(19).trim()
             searchYoutubeVideoId(searchCriteria)
         }else if(cleanTranscript==="play media"){
             playPlayer()
@@ -49,6 +49,12 @@ recognition.onresult=function(event){
         else if(cleanTranscript==="hide command list"){
             removeCommandList()
             window.evaIsListening=false
+        }else if(cleanTranscript.startsWith("show calendar for")){
+            const searchCriteria=cleanTranscript.slice(19).trim()
+            const [day,ofChar,monthName]=searchCriteria.split(" ")
+            const dayNum=day.substring(0,day.length-2)
+            console.log(dayNum)
+            console.log(monthName)
         }
     }
 }
