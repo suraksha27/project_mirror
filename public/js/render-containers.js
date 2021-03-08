@@ -18,36 +18,43 @@ function removeCommandList() {
 // bringCommandList()
 
 function injectCalenderTodo(dateString) {
-    let incomingDate=dateString
-    console.log(dateString)
+  let incomingDate = dateString;
+  window.calenderKey={
+      dateString:dateString,
+      todayDate:null
+  }
+  console.log(dateString);
   let calenderToDoHtml = "";
   if (dateString === "today") {
     calenderToDoHtml = `<h3>Today's Reminders</h3>`;
     const monthNames = [
-        "january",
-        "february",
-        "march",
-        "april",
-        "may",
-        "june",
-        "july",
-        "august",
-        "september",
-        "october",
-        "november",
-        "december",
-      ];
-      const d = new Date();
-      incomingDate = monthNames[d.getMonth()]+"-"+d.getDate()
-  }else{
-    calenderToDoHtml = `<h3>${dateString.charAt(0).toUpperCase() + dateString.slice(1)}</h3>`;
+      "january",
+      "february",
+      "march",
+      "april",
+      "may",
+      "june",
+      "july",
+      "august",
+      "september",
+      "october",
+      "november",
+      "december",
+    ];
+    const d = new Date();
+    incomingDate = monthNames[d.getMonth()] + "-" + d.getDate();
+    window.calenderKey.todayDate=monthNames[d.getMonth()] + "-" + d.getDate();
+  } else {
+    calenderToDoHtml = `<h3>${
+      dateString.charAt(0).toUpperCase() + dateString.slice(1)
+    }</h3>`;
   }
   if (calenderData[incomingDate]) {
-    calenderToDoHtml += `<ul>`;
+    calenderToDoHtml += `<ol>`;
     calenderData[incomingDate].forEach((todo) => {
       calenderToDoHtml += `<li>${todo}</li>`;
     });
-    calenderToDoHtml += `</ul>`;
+    calenderToDoHtml += `</ol>`;
   } else {
     calenderToDoHtml += `<p style="text-align:center;margin-top:100px;font-size:35px;">No calender todos..</p>`;
   }

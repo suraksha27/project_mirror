@@ -63,6 +63,36 @@ recognition.onresult = function (event) {
           injectCalenderTodo(monthName + "-" + day);
         }
       }
+    }else if(cleanTranscript.startsWith("add item")) {
+        const newTodo=cleanTranscript.slice(9).trim();
+        calenderDate=window.calenderKey
+        if(calenderDate){
+            const {dateString, todayDate} = calenderDate
+            const dateToUse=dateString==="today"?todayDate:dateString
+            if(calenderData[dateToUse]){
+                calenderData[dateToUse].push(newTodo)
+            }else{
+                calenderData[dateToUse]=[newTodo]
+            }
+            injectCalenderTodo(dateString) 
+        }
+    }else if (cleanTranscript.startsWith("remove item number")){
+        const removeNumber=cleanTranscript.slice(19).trim();
+        calenderDate=window.calenderKey
+        if(calenderDate){
+            const {dateString, todayDate} = calenderDate
+            const dateToUse=dateString==="today"?todayDate:dateString
+            let itemIndex=null
+            if(removeNumber==="one" || removeNumber=="1"){itemIndex=1}
+            else if(removeNumber==="two" || removeNumber=="2"){itemIndex=2}
+            else if(removeNumber==="three" || removeNumber=="3"){itemIndex=3}
+            else if(removeNumber==="four" || removeNumber=="4"){itemIndex=4}
+            else if(removeNumber==="five" || removeNumber=="5"){itemIndex=5}
+            if(calenderData[dateToUse] && calenderData[dateToUse].length>=itemIndex){
+                calenderData[dateToUse].splice(itemIndex-1,1)
+                injectCalenderTodo(dateString)
+            }
+        }
     }
   }
 };

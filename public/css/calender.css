@@ -1,6 +1,5 @@
 #calender-div{
     width: 300px;
-    height: 600px;
     position: absolute;
     top:30%;
     right:0;
@@ -17,6 +16,6 @@
     text-align: center;
 }
 
-#calender-div > ul{
+#calender-div > ol{
     margin-left: 10px;
 }
