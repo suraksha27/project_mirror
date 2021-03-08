@@ -7,6 +7,7 @@
     /* border:solid 1px white; */
     color: white;
     border-radius: 10px;
+    border:solid 1px white;
     padding:20px;
     z-index: +5;
 }
